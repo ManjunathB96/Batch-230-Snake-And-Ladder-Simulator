@@ -11,12 +11,12 @@ public class SnakeAndLadder {
     public static void main(String[] args) {
         System.out.println("Welcome To Snake And Ladder Simulator....!");
 
-
         int playerPosition = 0;
         int dicePlayed = 0;
+        System.out.println("Starting Position is ::" + START_POSITION);
+
         while (playerPosition < WIN) {
             dicePlayed++;
-            System.out.println("Starting Position is ::" + START_POSITION);
 
             int ROLL_DICE = (int) (Math.floor(Math.random() * 10) % 6) + 1;
             System.out.println("After Rolling Dice We Get ::" + ROLL_DICE);
@@ -46,6 +46,7 @@ public class SnakeAndLadder {
                 default:
                     System.out.println("Something went wrong!!");
             }
+            System.out.println("Position :: " + playerPosition);
         }
     }
 }
