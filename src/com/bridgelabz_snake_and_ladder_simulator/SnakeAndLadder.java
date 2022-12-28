@@ -13,36 +13,39 @@ public class SnakeAndLadder {
 
 
         int playerPosition = 0;
+        int dicePlayed = 0;
+        while (playerPosition < WIN) {
+            dicePlayed++;
+            System.out.println("Starting Position is ::" + START_POSITION);
 
-        System.out.println("Starting Position is ::" + START_POSITION);
+            int ROLL_DICE = (int) (Math.floor(Math.random() * 10) % 6) + 1;
+            System.out.println("After Rolling Dice We Get ::" + ROLL_DICE);
+            int playerCheckOption = (int) (Math.random() * 3) + 1;
 
-        int ROLL_DICE = (int) (Math.floor(Math.random() * 10) % 6) + 1;
-        System.out.println("After Rolling Dice We Get ::" + ROLL_DICE);
-        int playerCheckOption = (int) (Math.random() * 3) + 1;
+            switch (playerCheckOption) {
+                case NO_PLAY:
+                    System.out.println("It's No Play, Your position is not changed, You are at :" + playerPosition);
+                    break;
 
-        switch (playerCheckOption) {
-            case NO_PLAY:
-                System.out.println("It's No Play, Your position is not changed, You are at :" + playerPosition);
-                break;
+                case LADDER:
+                    if ((playerPosition + ROLL_DICE) <= WIN) {
+                        playerPosition = playerPosition + ROLL_DICE;
+                        System.out.println("Congratulations !! You Got the ladder your position will be increesed by " + ROLL_DICE);
+                    }
+                    break;
 
-            case LADDER:
-                if ((playerPosition + ROLL_DICE) <= WIN) {
-                    playerPosition = playerPosition + ROLL_DICE;
-                    System.out.println("Congratulations !! You Got the ladder your position will be increesed by " + ROLL_DICE);
-                }
-                break;
+                case SNAKE:
+                    if ((playerPosition - ROLL_DICE) < START_POSITION) {
+                        playerPosition = START_POSITION;
+                    } else {
+                        playerPosition = playerPosition - ROLL_DICE;
+                        System.out.println("Oops !! You just got bitten by snake your position will be decreased by " + ROLL_DICE);
+                    }
+                    break;
 
-            case SNAKE:
-                if ((playerPosition - ROLL_DICE) < START_POSITION) {
-                    playerPosition = START_POSITION;
-                } else {
-                    playerPosition = playerPosition - ROLL_DICE;
-                    System.out.println("Oops !! You just got bitten by snake your position will be decreased by " + ROLL_DICE);
-                }
-                break;
-
-            default:
-                System.out.println("Something went wrong!!");
+                default:
+                    System.out.println("Something went wrong!!");
+            }
         }
     }
 }
