@@ -2,6 +2,7 @@ package com.bridgelabz_snake_and_ladder_simulator;
 
 public class SnakeAndLadder {
 
+    //Constants
     public static final int NO_PLAY = 1;
     public static final int LADDER = 2;
     public static final int SNAKE = 3;
@@ -48,5 +49,6 @@ public class SnakeAndLadder {
             }
             System.out.println("Position :: " + playerPosition);
         }
+        System.out.println("We just make " + dicePlayed + " Number of dice to win the game");
     }
 }
